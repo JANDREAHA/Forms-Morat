@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="preguntas.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>preguntas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anta&family=Bebas+Neue&family=Black+Ops+One&family=Bungee&family=Luckiest+Guy&display=swap" rel="stylesheet">    
+</head>
+<body onload="comenzarReloj()">
+    <div class="reloj">Te queda para acabar <span id ="cuenta">30</span> </div>
+    <div class="and"><h1>MORAT</h1>
+    <p class="pregunta">¿CUANTOS INEGRANTES SON?</p>
+    <input class="Resp" type="text" name="Cuadrotext" id="pregunta"><br>
+    <p class="pregunta">¿COMO SE LLAMABA LA BANDA ANTES DE SER MORAT?</p>
+    <input class="Resp" type="text" name="Cuadrotext" id="pregunta1"><br>
+    <p class="pregunta">¿CANCION MAS CONOCIDA?</p>
+    <input class="Resp" type="text" name="Cuadrotext" id="pregunta2"><br>
+    <p class="pregunta">NOMBRE DEL BATERISTA:</p>
+    <input class="Resp" type="text" name="Cuadrotext" id="pregunta3"><br>
+
+    <p><button class="button" onclick="pregunta()">LISTO CALIXTO</button> </p>
+    <button class="button" onclick="comenzarRelojnuevo()">NEW</button></div>
+    <audio controls id="audio">
+        <source src="gameover.mp3" type="audio/mpeg"/>
+    </audio>
+    <script>
+        let tiempo = document.getElementById("cuenta");
+        let intervalo;
+
+        function comenzarReloj() {
+            intervalo = setInterval(segundo, 1000);
+            setTimeout(to, 30000);
+        }
+
+        function to() {
+            clearInterval(intervalo);
+            mostrarGameOver();
+        }
+
+        function segundo() {
+            let falta = tiempo.textContent;
+            tiempo.textContent = falta - 1;
+        }
+
+        function pregunta() {
+
+            detenerTemporizador();
+                    
+            var respuesta1 = document.getElementById("pregunta").value;
+            var respuesta2 = document.getElementById("pregunta1").value;
+            var respuesta3 = document.getElementById("pregunta2").value;
+            var respuesta4 = document.getElementById("pregunta3").value;
+
+
+            alert("Respuestas:\n1. " + respuesta1 + "\n2. " + respuesta2 + "\n3. " + respuesta3 + "\n4. " + respuesta4);
+            }
+        function detenerTemporizador() {
+        clearInterval(intervalo);
+        }
+
+        function comenzarRelojnuevo() {
+            document.getElementById("pregunta").value = "";
+            document.getElementById("pregunta1").value = "";
+            document.getElementById("pregunta2").value = "";
+            document.getElementById("pregunta3").value = "";
+
+            tiempo.textContent = 30;
+            clearInterval(intervalo);
+            comenzarReloj();
+        }
+
+        function mostrarGameOver() {
+            audio.play();
+            alert('¡Tiempo agotado! GAME OVER');
+            
+
+
+        }
+    </script>
+
+    </script>
+</body>
+</html>
